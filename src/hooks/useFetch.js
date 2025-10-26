@@ -6,12 +6,14 @@ export const useFetch = (url) =>{
     const [loading,setLoading] = useState(null);
     const [error,setError] = useState(null);
 
-    const fetchData = useCallback(async(signal) => {
+    // fetchData optionally accepts (signal, params) where params will be sent as query params
+    const fetchData = useCallback(async(signal, params) => {
         setLoading(true)
         try{
             const response = await authAxios({
-                url:url,
-                signal:signal,
+                url: url,
+                signal: signal,
+                params: params,
             })
             if(response.status === 200){
                 setData(response?.data?.data)
