@@ -34,13 +34,11 @@ export const TransactionHistory = ({isTransactionModalOpen,setIsTransactionModal
     }
 
     const onEditOpen = async(id) => {
-        //fetch transaction'
         await fetchSingleTransaction(id);
         setIsTransactionModalOpen(true);
     }
 
     const onEditClose = () => {
-        //fetch transaction'
         setSingleTransaction(null);
         setIsTransactionModalOpen(false);
     }
@@ -62,7 +60,6 @@ export const TransactionHistory = ({isTransactionModalOpen,setIsTransactionModal
                 toast.success("Transaction deleted successfully")
                 onDeleteClose()
                 const controller = new AbortController();
-                // Refresh with current filters if any
                 await fetchTransactions(controller.signal, currentFilters || undefined)
             }
         }catch(e){
